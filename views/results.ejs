@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/" style="padding-left: 50px"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a>
+          <a class="navbar-brand" style="padding-left: 80px"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Tweets</a>
+          <a class="navbar-brand" ><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Graph</a>
+        </div>
+      </div>
+    </nav>
+    <div class="jumbotron" style="background-color:#4099ff">
+      <div class="container">
+        <h3 style="color:white">Related Tweets are shown below :</h1>
+      </div>
+    </div>
+
+    <ul class="media-list" style="padding-left: 140px">
+        <% data.statuses.forEach(function(statuse){ %>
+          <li class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object" src="http://localhost:3000/images/football.jpg" alt="football-icon" hight="40" width="35">
+                </a>
+            </div>
+            <div class="media-body">
+                <h5 class="media-heading">Author: <a href="https://twitter.com/<%= statuse.user.screen_name %>"><%= statuse.user.name %> @<%= statuse.user.screen_name %></a></h5>
+                <h6>date: <%= statuse.created_at.replace("+0000","") %></h6>
+                <p>Tweet: <%= statuse.text %></p>
+            </div>
+          </li>
+        <% }); %>
+    </ul>
+
+  </body>
+</html>
+
+
